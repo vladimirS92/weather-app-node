@@ -9,7 +9,7 @@ weatherForm.addEventListener('submit', (event) => {
 
   weatherMsg.textContent = 'Loading...';
 
-  fetch('http://localhost:3000/weather?address=' + location, {
+  fetch('/weather?address=' + location, {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',

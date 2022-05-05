@@ -6,6 +6,8 @@ const geocode = require('../../weather-app/utils/geocode');
 const forecast = require('../../weather-app/utils/weather');
 
 const app = express();
+//setup port for heroku
+const port = process.env.PORT || 3000;
 
 //define static directory path
 app.use(express.static(path.join(__dirname, '../public')));
@@ -76,5 +78,8 @@ app.get('*', (req, res) => {
   });
 });
 
-//define localhost port
-app.listen(3000, () => console.log('Server is up on port 3000'));
+//define localhost port test
+// app.listen(3000, () => console.log('Server is up on port 3000'));
+
+//prd
+app.listen(port, () => console.log('Server is up on port ' + port));
