@@ -2,8 +2,8 @@ const path = require('path');
 const express = require('express');
 const hbs = require('hbs');
 
-const geocode = require('../../weather-app/utils/geocode');
-const forecast = require('../../weather-app/utils/weather');
+const geocode = require('../utils/geocode');
+const forecast = require('../utils/weather');
 
 const app = express();
 //setup port for heroku
