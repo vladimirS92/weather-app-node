@@ -14,6 +14,7 @@ const weather = ([atitude, longtitude], callback) => {
         temperature: body.current.temperature,
         location: body.location.name,
         description: body.current.weather_descriptions,
+        image: body.current.weather_icons[0],
       };
       callback(undefined, data);
     }

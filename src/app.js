@@ -2,8 +2,8 @@ const path = require('path');
 const express = require('express');
 const hbs = require('hbs');
 
-const geocode = require('../utils/geocode');
-const forecast = require('../utils/weather');
+const geocode = require('./utils/geocode');
+const forecast = require('./utils/weather');
 
 const app = express();
 //setup port for heroku
@@ -51,7 +51,7 @@ app.get('/weather', (req, res) => {
     if (error) {
       return res.send(error ? error : 'No address provided');
     }
-    forecast([latitude, longtitude], (error, { temperature, location, description }) => {
+    forecast([latitude, longtitude], (error, { temperature, location, description, image }) => {
       if (error) {
         res.send(error);
       }
@@ -60,6 +60,7 @@ app.get('/weather', (req, res) => {
         forcast: 'It is currently ' + temperature + ' degrees out in ' + location + '. ' + description + '.',
         location: geolocation,
         address: req.query.address,
+        image: image,
       });
     });
   });

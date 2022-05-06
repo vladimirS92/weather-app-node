@@ -1,6 +1,11 @@
-const weatherMsg = document.querySelector('#message');
+const weatherMsg = document.getElementById('message');
+const weatherImg = document.getElementById('image');
 const weatherForm = document.querySelector('form');
 const searchInput = document.querySelector('input');
+
+//init state
+weatherImg.src = '../img/favicon.png';
+weatherMsg.textContent = 'Type location';
 
 weatherForm.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -20,6 +25,7 @@ weatherForm.addEventListener('submit', (event) => {
       if (data.error) {
         weatherMsg.textContent = data.error;
       } else {
+        weatherImg.src = data.image;
         weatherMsg.textContent = data.location + '. ' + data.forcast;
       }
     });
